@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ふるや りさ — 事業設計コンサルレポート</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
+  background: #f7f3ee;
+  color: #2a2318;
+  padding: 56px 24px 100px;
+  line-height: 1.7;
+}
+.page { max-width: 960px; margin: 0 auto; }
+
+/* ── カラー変数 ── */
+:root {
+  --gold:   #947f5a;
+  --gold2:  #c8a96e;
+  --cream:  #f7f3ee;
+  --card:   #ffffff;
+  --border: #e8dfd0;
+  --text:   #2a2318;
+  --muted:  #9a8c7a;
+  --light:  #f0ead e;
+  --red:    #b85a4a;
+  --green:  #5a8a6a;
+  --blue:   #5a6a8a;
+  --purple: #7a5a8a;
+}
+
+/* ── ヘッダー ── */
+.header {
+  text-align: center;
+  padding-bottom: 40px;
+  margin-bottom: 56px;
+  border-bottom: 1px solid var(--border);
+}
+.header-eyebrow {
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.header-name {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.header-title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.header-title em {
+  color: var(--gold);
+  font-style: normal;
+  border-bottom: 2px solid var(--gold2);
+  padding-bottom: 1px;
+}
+.header-sub {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* ── セクション ── */
+.section { margin-bottom: 72px; }
+.sec-eyebrow {
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.sec-title {
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.sec-title span { color: var(--gold); }
+.sec-desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.8;
+}
+
+/* ── カード ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 26px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+}
+
+/* ── 問題点 ── */
+.issue-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.issue-card {
+  background: #fff8f7;
+  border: 1px solid #e8d0cc;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.issue-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--red);
+}
+.issue-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: #f0e8e6;
+  position: absolute;
+  top: 8px; right: 14px;
+  line-height: 1;
+}
+.issue-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.issue-body {
+  font-size: 11px;
+  color: #7a6a68;
+  line-height: 1.8;
+}
+
+/* ── Before/After ── */
+.ba-wrap {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: 0;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.ba-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+}
+.ba-card.after {
+  border-color: #c8a96e88;
+  background: #faf7f0;
+}
+.ba-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ba-label .bar {
+  width: 16px; height: 2px;
+  background: var(--muted);
+  border-radius: 2px;
+}
+.ba-label.gold { color: var(--gold); }
+.ba-label.gold .bar { background: var(--gold); }
+.ba-row { margin-bottom: 12px; }
+.ba-row-label {
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.ba-row-val {
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.ba-row-val.gold { color: var(--gold); font-weight: 600; }
+.ba-arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+/* ── コンサルメモ ── */
+.memo {
+  background: #f5f0e8;
+  border: 1px solid #ddd0b8;
+  border-radius: 10px;
+  padding: 18px 22px;
+  font-size: 12px;
+  color: #6a5c48;
+  line-height: 1.9;
+  margin-top: 16px;
+}
+.memo-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 700;
+}
+.memo strong { color: var(--text); }
+
+/* ════════════════════════
+   カスタマージャーニー
+════════════════════════ */
+.journey-stages {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 0;
+  margin-bottom: 32px;
+}
+.js-col { text-align: center; }
+.js-stage {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-right: none;
+  padding: 14px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  position: relative;
+}
+.js-col:last-child .js-stage { border-right: 1px solid var(--border); }
+.js-stage::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--c, var(--border));
+}
+.js-stage-sub {
+  font-size: 9px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: 120px repeat(5,1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.jg-cell {
+  background: var(--card);
+  padding: 12px 10px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.jg-cell.header-cell {
+  background: #f5f0e8;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+.jg-cell.label-cell {
+  background: #f5f0e8;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+}
+.jg-cell.action { color: var(--text); }
+.jg-cell.thought { color: #7a6a5a; font-style: italic; font-size: 10px; }
+.jg-cell.emotion { text-align: center; font-size: 18px; }
+.jg-cell.current { background: #fff8f7; }
+.jg-cell.current.bad { color: var(--red); font-size: 10px; }
+.jg-cell.new-way { background: #f5faf7; }
+.jg-cell.new-way.good { color: var(--green); font-size: 10px; }
+.jg-cell.touchpoint { color: var(--blue); font-size: 10px; }
+
+/* 認知設計 */
+.awareness-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.aw-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.aw-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--c, var(--border));
+}
+.aw-platform {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--c, var(--muted));
+  margin-bottom: 6px;
+}
+.aw-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.aw-list {
+  list-style: none;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 2;
+}
+.aw-list li::before {
+  content: '—';
+  color: var(--c, var(--muted));
+  margin-right: 8px;
+}
+.post-example {
+  margin-top: 12px;
+  background: #f7f3ee;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 11px;
+  color: #6a5c48;
+  line-height: 1.9;
+  border: 1px solid var(--border);
+}
+.post-label {
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ════════════════════════
+   ファネル
+════════════════════════ */
+.funnel-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 40px;
+}
+.ff-step { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.ff-box {
+  width: var(--w,100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.ff-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--c, var(--border));
+}
+.ff-left { display: flex; align-items: center; gap: 14px; }
+.ff-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--bg-icon, #f5f0e8);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.ff-name { font-size: 13px; font-weight: 700; }
+.ff-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.ff-right { text-align: right; flex-shrink: 0; }
+.ff-num { font-size: 26px; font-weight: 800; color: var(--c, var(--muted)); line-height: 1; }
+.ff-unit { font-size: 10px; color: var(--muted); }
+.ff-cvr-badge {
+  display: inline-block;
+  font-size: 9px;
+  background: #f5f0e8;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 7px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.ff-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 0;
+}
+.ff-arrow-line { width: 1px; height: 18px; background: var(--border); }
+.ff-arrow-head {
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--border);
+}
+.ff-arrow-label { font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-top: 3px; }
+
+.ff-branch { display: flex; gap: 12px; width: 100%; margin-top: 0; }
+.ff-branch-item { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+/* Day別 */
+.day-grid {
+  display: grid;
+  grid-template-columns: 72px 28px 1fr;
+  gap: 0;
+  margin-bottom: 4px;
+}
+.d-label {
+  text-align: right;
+  padding-right: 14px;
+  padding-top: 18px;
+}
+.d-daynum {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--c, var(--muted));
+  letter-spacing: 1px;
+}
+.d-time { font-size: 9px; color: #bbb; margin-top: 2px; }
+.d-axis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.d-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--c, var(--muted));
+  flex-shrink: 0;
+  margin-top: 21px;
+}
+.d-line {
+  width: 1px; flex: 1;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  min-height: 16px;
+}
+.d-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 8px 0 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,.04);
+}
+.d-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--c, var(--border));
+}
+.d-phase {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--c, var(--muted));
+  margin-bottom: 4px;
+}
+.d-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.d-body { font-size: 11px; color: var(--muted); line-height: 1.8; }
+.d-body strong { color: var(--text); }
+.d-msg {
+  margin-top: 10px;
+  background: #f7f3ee;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 11px;
+  color: #6a5c48;
+  line-height: 1.9;
+}
+.d-msg-subject {
+  display: inline-block;
+  font-size: 9px;
+  color: var(--gold);
+  background: #efe8d8;
+  border-radius: 3px;
+  padding: 1px 7px;
+  margin-bottom: 7px;
+  letter-spacing: 1px;
+}
+.d-msg em { color: var(--text); font-style: normal; }
+.d-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.d-tag {
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: #f5f0e8;
+  color: var(--c, var(--muted));
+  border: 1px solid var(--border);
+}
+
+/* 分岐カード */
+.close-cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+.cc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.cc::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 3px;
+  background: var(--c, var(--border));
+}
+.cc-tag { font-size: 9px; color: var(--muted); letter-spacing: 2px; margin-bottom: 8px; }
+.cc-price { font-size: 28px; font-weight: 800; color: var(--c, var(--muted)); line-height: 1; margin-bottom: 4px; }
+.cc-name { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+.cc-desc { font-size: 11px; color: #8a7a6a; line-height: 1.7; }
+.cc-result {
+  margin-top: 12px;
+  font-size: 10px;
+  color: var(--muted);
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.cc-result strong { color: var(--c, var(--muted)); font-size: 14px; }
+
+/* サマリー */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.sg {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+}
+.sg-num { font-size: 20px; font-weight: 800; color: var(--gold); }
+.sg-label { font-size: 9px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+
+.total-box {
+  background: #faf7f0;
+  border: 1px solid #c8a96e88;
+  border-radius: 12px;
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tb-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; }
+.tb-sub { font-size: 11px; color: #c8b898; margin-top: 3px; }
+.tb-num { font-size: 32px; font-weight: 800; color: var(--gold); }
+
+/* 優先タスク */
+.task-list { display: flex; flex-direction: column; gap: 10px; }
+.task-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+.task-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.task-content {}
+.task-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.task-body { font-size: 11px; color: var(--muted); line-height: 1.8; }
+.task-badge {
+  display: inline-block;
+  font-size: 9px;
+  padding: 1px 7px;
+  border-radius: 3px;
+  background: #f5f0e8;
+  color: var(--gold);
+  border: 1px solid #ddd0b8;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.sep { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ── ヘッダー ── -->
+<div class="header">
+  <p class="header-eyebrow">CONSULTING REPORT</p>
+  <p class="header-name">ふるや りさ / @risa_line_consultant</p>
+  <h1 class="header-title">
+    アカウント設計の<em>修正点</em>と<br>
+    LINEファネル 全体設計
+  </h1>
+  <p class="header-sub">カスタマージャーニー × 認知設計 × 収益ファネル / 2026</p>
+</div>
+
+
+<!-- ════════════════════════════════
+     01 前アカウントの失敗分析
+════════════════════════════════ -->
+<div class="section">
+  <p class="sec-eyebrow">SECTION 01</p>
+  <h2 class="sec-title">前アカウントの<span>失敗分析</span></h2>
+  <p class="sec-desc">「LINE構築代行」をtoCに販売していたことが最大の問題。構造的な原因を整理する。</p>
+
+  <div class="issue-grid">
+    <div class="issue-card">
+      <div class="issue-num">01</div>
+      <div class="issue-title">toC × LINE構築という<br>誤ったマッチング</div>
+      <div class="issue-body">
+        toBなら高単価・継続案件になるLINE構築も、個人起業家相手では「安く・一回きり」になりやすい。ターゲットそのものがズレていた。
+      </div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-num">02</div>
+      <div class="issue-title">カスタマージャーニーが<br>設計されていなかった</div>
+      <div class="issue-body">
+        認知 → 興味 → 購買の流れが曖昧で、見込み客がどのタイミングで何を感じているかを無視した発信・訴求になっていた。
+      </div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-num">03</div>
+      <div class="issue-title">シンプルな認知が<br>圧倒的に足りなかった</div>
+      <div class="issue-body">
+        「LINEコンサルタント」というポジションは競合が多く、発信が専門的すぎて刺さる人が絞られすぎた。もっと広い入口が必要だった。
+      </div>
+    </div>
+  </div>
+
+  <!-- Before / After -->
+  <div class="ba-wrap">
+    <div class="ba-card">
+      <div class="ba-label"><div class="bar"></div>旧アカウント</div>
+      <div class="ba-row">
+        <div class="ba-row-label">ポジション</div>
+        <div class="ba-row-val">LINEコンサルタント</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">商品</div>
+        <div class="ba-row-val">LINE構築代行（toC）</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">認知の入口</div>
+        <div class="ba-row-val">LINE知識の発信（狭い）</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">ジャーニー設計</div>
+        <div class="ba-row-val">なし（場当たり的）</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">収益構造</div>
+        <div class="ba-row-val">労働集約・単価低</div>
+      </div>
+    </div>
+    <div class="ba-arrow-col">→</div>
+    <div class="ba-card after">
+      <div class="ba-label gold"><div class="bar" style="background:var(--gold)"></div>新設計</div>
+      <div class="ba-row">
+        <div class="ba-row-label">ポジション</div>
+        <div class="ba-row-val gold">自立設計コンサルタント</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">商品</div>
+        <div class="ba-row-val gold">高単価プログラム × コミュニティ</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">認知の入口</div>
+        <div class="ba-row-val gold">ビジネス・自立・副業（広い）</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">ジャーニー設計</div>
+        <div class="ba-row-val gold">5段階で設計（次章参照）</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-row-label">収益構造</div>
+        <div class="ba-row-val gold">高単価 × 継続型</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="memo">
+    <span class="memo-label">CONSULTING MEMO</span>
+    <strong>「LINE」は商品名ではなく手段</strong>として扱う。ビジネス・自立・副業という広いテーマで認知を取り、
+    「LINEの自動化が最強の武器になるが難しい → だから私のプログラムで学ぶ or 設計ごと任せる」という流れにする。
+    LINE構築は「できること」として持ちつつ、前面には出さない。
+  </div>
+</div>
+
+<hr class="sep">
+
+
+<!-- ════════════════════════════════
+     02 カスタマージャーニー
+════════════════════════════════ -->
+<div class="section">
+  <p class="sec-eyebrow">SECTION 02</p>
+  <h2 class="sec-title">カスタマー<span>ジャーニー設計</span></h2>
+  <p class="sec-desc">見込み客が「知る → 興味 → 検討 → 購買 → 継続」のどのステージにいるかを意識して、発信・施策を配置する。</p>
+
+  <!-- ステージヘッダー -->
+  <div style="display:grid;grid-template-columns:120px repeat(5,1fr);gap:1px;background:var(--border);border-radius:12px 12px 0 0;overflow:hidden;border:1px solid var(--border);border-bottom:none;">
+    <div style="background:#f5f0e8;padding:12px 10px;font-size:9px;font-weight:700;color:var(--gold);letter-spacing:1px;display:flex;align-items:center;"></div>
+    <div style="background:#f5f0e8;padding:12px 10px;text-align:center;border-left:1px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;">認知</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;">Awareness</div>
+    </div>
+    <div style="background:#f5f0e8;padding:12px 10px;text-align:center;border-left:1px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;">興味</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;">Interest</div>
+    </div>
+    <div style="background:#f5f0e8;padding:12px 10px;text-align:center;border-left:1px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;">検討</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;">Consideration</div>
+    </div>
+    <div style="background:#f5f0e8;padding:12px 10px;text-align:center;border-left:1px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;">購買</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;">Purchase</div>
+    </div>
+    <div style="background:#f5f0e8;padding:12px 10px;text-align:center;border-left:1px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;">継続</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;">Loyalty</div>
+    </div>
+  </div>
+
+  <!-- ジャーニーグリッド -->
+  <div style="display:grid;grid-template-columns:120px repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;overflow:hidden;margin-bottom:20px;">
+
+    <!-- 行1：顧客の行動 -->
+    <div style="background:#f5f0e8;padding:12px 10px;font-size:10px;font-weight:700;color:var(--text);display:flex;align-items:center;">顧客の<br>行動</div>
+    <div style="background:white;padding:12px 10px;font-size:11px;color:var(--text);line-height:1.7;border-left:1px solid var(--border);">Threadsで投稿を見る</div>
+    <div style="background:white;padding:12px 10px;font-size:11px;color:var(--text);line-height:1.7;border-left:1px solid var(--border);">フォローする・LINE登録</div>
+    <div style="background:white;padding:12px 10px;font-size:11px;color:var(--text);line-height:1.7;border-left:1px solid var(--border);">VSL視聴・相談申込</div>
+    <div style="background:white;padding:12px 10px;font-size:11px;color:var(--text);line-height:1.7;border-left:1px solid var(--border);">Zoom相談・成約</div>
+    <div style="background:white;padding:12px 10px;font-size:11px;color:var(--text);line-height:1.7;border-left:1px solid var(--border);">プログラム参加・紹介</div>
+
+    <!-- 行2：顧客の思考 -->
+    <div style="background:#f5f0e8;padding:12px 10px;font-size:10px;font-weight:700;color:var(--text);display:flex;align-items:center;">顧客の<br>思考</div>
+    <div style="background:#fffdf9;padding:12px 10px;font-size:10px;color:#8a7a6a;line-height:1.7;font-style:italic;border-left:1px solid var(--border);">「わかる…」<br>「この人面白い」</div>
+    <div style="background:#fffdf9;padding:12px 10px;font-size:10px;color:#8a7a6a;line-height:1.7;font-style:italic;border-left:1px solid var(--border);">「動画見てみよう」<br>「もっと知りたい」</div>
+    <div style="background:#fffdf9;padding:12px 10px;font-size:10px;color:#8a7a6a;line-height:1.7;font-style:italic;border-left:1px solid var(--border);">「自分に必要かも」<br>「高いけど…どうしよう」</div>
+    <div style="background:#fffdf9;padding:12px 10px;font-size:10px;color:#8a7a6a;line-height:1.7;font-style:italic;border-left:1px solid var(--border);">「やってみよう」<br>「信頼できる」</div>
+    <div style="background:#fffdf9;padding:12px 10px;font-size:10px;color:#8a7a6a;line-height:1.7;font-style:italic;border-left:1px solid var(--border);">「友達に紹介したい」<br>「ここが居場所」</div>
+
+    <!-- 行3：感情 -->
+    <div style="background:#f5f0e8;padding:12px 10px;font-size:10px;font-weight:700;color:var(--text);display:flex;align-items:center;">感情</div>
+    <div style="background:white;padding:12px 10px;font-size:20px;text-align:center;border-left:1px solid var(--border);">😶</div>
+    <div style="background:white;padding:12px 10px;font-size:20px;text-align:center;border-left:1px solid var(--border);">🙂</div>
+    <div style="background:white;padding:12px 10px;font-size:20px;text-align:center;border-left:1px solid var(--border);">😟</div>
+    <div style="background:white;padding:12px 10px;font-size:20px;text-align:center;border-left:1px solid var(--border);">😊</div>
+    <div style="background:white;padding:12px 10px;font-size:20px;text-align:center;border-left:1px solid var(--border);">🤩</div>
+
+    <!-- 行4：タッチポイント -->
+    <div style="background:#f5f0e8;padding:12px 10px;font-size:10px;font-weight:700;color:var(--text);display:flex;align-items:center;">タッチ<br>ポイント</div>
+    <div style="background:white;padding:12px 10px;font-size:10px;color:var(--blue);line-height:1.8;border-left:1px solid var(--border);">Threads投稿<br>Instagram</div>
+    <div style="background:white;padding:12px 10px;font-size:10px;color:var(--blue);line-height:1.8;border-left:1px solid var(--border);">LINE登録<br>ステップ配信</div>
+    <div style="background:white;padding:12px 10px;font-size:10px;color:var(--blue);line-height:1.8;border-left:1px solid var(--border);">VSL（50分）<br>申込フォーム</div>
+    <div style="background:white;padding:12px 10px;font-size:10px;color:var(--blue);line-height:1.8;border-left:1px solid var(--border);">Zoom相談<br>クロージング</div>
+    <div style="background:white;padding:12px 10px;font-size:10px;color:var(--blue);line-height:1.8;border-left:1px solid var(--border);">プログラム<br>コミュニティ</div>
+
+    <!-- 行5：旧アカウントの問題 -->
+    <div style="background:#fff8f7;padding:12px 10px;font-size:10px;font-weight:700;color:var(--red);display:flex;align-items:center;">旧設計の<br>問題点</div>
+    <div style="background:#fff8f7;padding:12px 10px;font-size:10px;color:var(--red);line-height:1.8;border-left:1px solid var(--border);">入口が狭すぎた（LINE知識のみ）</div>
+    <div style="background:#fff8f7;padding:12px 10px;font-size:10px;color:var(--red);line-height:1.8;border-left:1px solid var(--border);">教育設計なし</div>
+    <div style="background:#fff8f7;padding:12px 10px;font-size:10px;color:var(--red);line-height:1.8;border-left:1px solid var(--border);">VSLなし・いきなり売込み</div>
+    <div style="background:#fff8f7;padding:12px 10px;font-size:10px;color:var(--red);line-height:1.8;border-left:1px solid var(--border);">低単価のtoC代行</div>
+    <div style="background:#fff8f7;padding:12px 10px;font-size:10px;color:var(--red);line-height:1.8;border-left:1px solid var(--border);">継続設計なし</div>
+
+    <!-- 行6：新設計の施策 -->
+    <div style="background:#f5faf7;padding:12px 10px;font-size:10px;font-weight:700;color:var(--green);display:flex;align-items:center;">新設計の<br>施策</div>
+    <div style="background:#f5faf7;padding:12px 10px;font-size:10px;color:var(--green);line-height:1.8;border-left:1px solid var(--border);">ビジネス・副業・自立で広く認知</div>
+    <div style="background:#f5faf7;padding:12px 10px;font-size:10px;color:var(--green);line-height:1.8;border-left:1px solid var(--border);">6日間ステップ配信で教育</div>
+    <div style="background:#f5faf7;padding:12px 10px;font-size:10px;color:var(--green);line-height:1.8;border-left:1px solid var(--border);">VSL（50分）で一気に信頼構築</div>
+    <div style="background:#f5faf7;padding:12px 10px;font-size:10px;color:var(--green);line-height:1.8;border-left:1px solid var(--border);">60万・150万の高単価</div>
+    <div style="background:#f5faf7;padding:12px 10px;font-size:10px;color:var(--green);line-height:1.8;border-left:1px solid var(--border);">コミュニティで継続・紹介</div>
+  </div>
+
+  <div class="memo">
+    <span class="memo-label">CONSULTING MEMO — 認知設計の鉄則</span>
+    <strong>「興味がある人だけ」に刺さる発信は絶対にNG。</strong>認知ステージの人は「まだLINEに興味もない」。
+    まず「自立したい」「稼ぎたい」「自由になりたい」という広いテーマで認知を取り、
+    そこから興味 → 検討へ段階的に教育していく。認知と販売を同じ投稿でやろうとしていたのが旧設計の失敗。
+  </div>
+</div>
+
+<hr class="sep">
+
+
+<!-- ════════════════════════════════
+     03 認知設計（Threads戦略）
+════════════════════════════════ -->
+<div class="section">
+  <p class="sec-eyebrow">SECTION 03</p>
+  <h2 class="sec-title">シンプル<span>認知設計</span> — Threads戦略</h2>
+  <p class="sec-desc">Threadsをメインに。「知ってもらう」ことだけに集中した入口設計。</p>
+
+  <div class="awareness-grid">
+    <div class="aw-card" style="--c:#947f5a;">
+      <div class="aw-platform">THREADS — 認知フェーズ</div>
+      <div class="aw-title">広いテーマで「刺す」投稿</div>
+      <ul class="aw-list">
+        <li>フリーランス・副業で稼ぐリアルな話</li>
+        <li>「夫に依存していた自分」の本音</li>
+        <li>女性が自立するための経済知識</li>
+        <li>起業1年目がやりがちなミス</li>
+        <li>労働集約から抜け出した話</li>
+      </ul>
+      <div class="post-example">
+        <span class="post-label">投稿例（認知向け）</span>
+        フリーランス2年目で月30万稼いでも、なんか不安だった。<br><br>
+        理由がわかった。<br>
+        「自分が止まったら収入が止まる」構造だったから。<br><br>
+        稼ぐことより先に、設計が必要だった。
+      </div>
+    </div>
+    <div class="aw-card" style="--c:#5a6a8a;">
+      <div class="aw-platform">THREADS — 興味・検討フェーズ</div>
+      <div class="aw-title">「もっと知りたい」を生む投稿</div>
+      <ul class="aw-list">
+        <li>LINEで自動化すると何が変わるか</li>
+        <li>収益導線の設計ってどういうこと？</li>
+        <li>自立した女性の収益構造の裏側</li>
+        <li>「難しいよね → だからLINEで自動化」</li>
+        <li>LINE登録へのCTA（プレゼント訴求）</li>
+      </ul>
+      <div class="post-example">
+        <span class="post-label">投稿例（興味 → LINE誘導）</span>
+        ビジネスの仕組みを作るのに、LINEが最強ツールな理由。<br><br>
+        ①自動でフォローできる<br>
+        ②寝ててもセールスが動く<br>
+        ③顧客と深く繋がれる<br><br>
+        でも正直、設計が難しい。<br>
+        どう設計してるか、LINE限定で話します。→
+      </div>
+    </div>
+  </div>
+
+  <!-- 投稿テーマ比率 -->
+  <div class="card">
+    <div style="font-size:12px;font-weight:700;margin-bottom:16px;">Threads 投稿テーマの黄金比</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+      <div style="text-align:center;padding:16px 8px;background:#f7f3ee;border-radius:10px;border:1px solid var(--border);">
+        <div style="font-size:28px;font-weight:800;color:var(--gold);">40%</div>
+        <div style="font-size:11px;font-weight:700;margin:6px 0 4px;">共感・本音</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.6;">自立・副業・稼ぐリアルな話</div>
+      </div>
+      <div style="text-align:center;padding:16px 8px;background:#f7f3ee;border-radius:10px;border:1px solid var(--border);">
+        <div style="font-size:28px;font-weight:800;color:var(--gold);">30%</div>
+        <div style="font-size:11px;font-weight:700;margin:6px 0 4px;">知識・教育</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.6;">ビジネス設計・収益化の方法</div>
+      </div>
+      <div style="text-align:center;padding:16px 8px;background:#f7f3ee;border-radius:10px;border:1px solid var(--border);">
+        <div style="font-size:28px;font-weight:800;color:var(--gold);">20%</div>
+        <div style="font-size:11px;font-weight:700;margin:6px 0 4px;">実績・証拠</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.6;">変化・数字・クライアントの声</div>
+      </div>
+      <div style="text-align:center;padding:16px 8px;background:#faf7f0;border-radius:10px;border:1px solid #c8a96e88;">
+        <div style="font-size:28px;font-weight:800;color:var(--gold);">10%</div>
+        <div style="font-size:11px;font-weight:700;margin:6px 0 4px;">CTA</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.6;">LINE登録・動画プレゼント</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+
+<!-- ════════════════════════════════
+     04 LINEファネル設計
+════════════════════════════════ -->
+<div class="section">
+  <p class="sec-eyebrow">SECTION 04</p>
+  <h2 class="sec-title">LINE <span>ファネル設計</span> — 登録初日VSL型 / 6日間訴求</h2>
+
+  <!-- 全体フロー -->
+  <div class="funnel-flow">
+    <div class="ff-step">
+      <div class="ff-box" style="--c:#5a6a8a;--bg-icon:#eef0f5;">
+        <div class="ff-left">
+          <div class="ff-icon">𝕏</div>
+          <div>
+            <div class="ff-name">Threads（メイン）/ Instagram</div>
+            <div class="ff-desc">広いテーマで認知 → LINE登録へ誘導</div>
+          </div>
+        </div>
+        <div class="ff-right">
+          <div class="ff-num" style="color:#5a6a8a;">2,000</div>
+          <div class="ff-unit">フォロワー（3ヶ月目標）</div>
+        </div>
+      </div>
+    </div>
+    <div class="ff-arrow">
+      <div class="ff-arrow-line"></div>
+      <div class="ff-arrow-head"></div>
+      <div class="ff-arrow-label">登録率 10%</div>
+    </div>
+
+    <div class="ff-step">
+      <div class="ff-box" style="--c:#947f5a;--bg-icon:#f5f0e8;--w:88%;">
+        <div class="ff-left">
+          <div class="ff-icon">💬</div>
+          <div>
+            <div class="ff-name">LINE 登録</div>
+            <div class="ff-desc">50分動画プレゼント訴求で誘導</div>
+          </div>
+        </div>
+        <div class="ff-right">
+          <div class="ff-num" style="color:#947f5a;">200</div>
+          <div class="ff-unit">人（リスト）</div>
+        </div>
+      </div>
+    </div>
+    <div class="ff-arrow">
+      <div class="ff-arrow-line"></div>
+      <div class="ff-arrow-head"></div>
+      <div class="ff-arrow-label">即時配信（Day 0）</div>
+    </div>
+
+    <div class="ff-step">
+      <div class="ff-box" style="--c:#c8a96e;--bg-icon:#faf5e8;--w:76%;background:#fdf9f0;border-color:#ddd0a0;">
+        <div class="ff-left">
+          <div class="ff-icon">▶</div>
+          <div>
+            <div class="ff-name">VSL視聴（50分・無料動画として配布）</div>
+            <div class="ff-desc">前半：ビジネス・自立の教育 ／ 後半：商品提示 → 相談CTA</div>
+          </div>
+        </div>
+        <div class="ff-right">
+          <div class="ff-num" style="color:#c8a96e;">200</div>
+          <div class="ff-unit">人に配信</div>
+          <div class="ff-cvr-badge">6日間 訴求</div>
+        </div>
+      </div>
+    </div>
+    <div class="ff-arrow">
+      <div class="ff-arrow-line"></div>
+      <div class="ff-arrow-head"></div>
+      <div class="ff-arrow-label">相談申込率 20%</div>
+    </div>
+
+    <div class="ff-step">
+      <div class="ff-box" style="--c:#5a6a8a;--bg-icon:#eef0f5;--w:64%;">
+        <div class="ff-left">
+          <div class="ff-icon">📋</div>
+          <div>
+            <div class="ff-name">無料相談 申込（審査フォーム）</div>
+            <div class="ff-desc">本気度スクリーニング → Zoom日程案内</div>
+          </div>
+        </div>
+        <div class="ff-right">
+          <div class="ff-num" style="color:#5a6a8a;">40</div>
+          <div class="ff-unit">人</div>
+        </div>
+      </div>
+    </div>
+    <div class="ff-arrow">
+      <div class="ff-arrow-line"></div>
+      <div class="ff-arrow-head"></div>
+      <div class="ff-arrow-label">成約率 25%</div>
+    </div>
+
+    <div class="ff-branch">
+      <div class="ff-branch-item">
+        <div class="ff-box" style="--c:#7a5a8a;--bg-icon:#f0eef5;width:100%;">
+          <div class="ff-left">
+            <div class="ff-icon" style="font-size:14px;">👑</div>
+            <div>
+              <div class="ff-name">ハイエンドコミュニティ</div>
+              <div class="ff-desc">審査制 自立女性コミュニティ</div>
+            </div>
+          </div>
+          <div class="ff-right">
+            <div class="ff-num" style="color:#7a5a8a;font-size:20px;">150万</div>
+            <div class="ff-unit">× 3人 ＝ 450万</div>
+          </div>
+        </div>
+      </div>
+      <div class="ff-branch-item">
+        <div class="ff-box" style="--c:#5a8a6a;--bg-icon:#eef5f0;width:100%;">
+          <div class="ff-left">
+            <div class="ff-icon" style="font-size:14px;">🌱</div>
+            <div>
+              <div class="ff-name">3ヶ月プログラム</div>
+              <div class="ff-desc">思想設計 → 収益導線 → LINE構築</div>
+            </div>
+          </div>
+          <div class="ff-right">
+            <div class="ff-num" style="color:#5a8a6a;font-size:20px;">60万</div>
+            <div class="ff-unit">× 7人 ＝ 420万</div>
+          </div>
+        </div>
+      </div>
+      <div class="ff-branch-item">
+        <div class="ff-box" style="--c:#b85a4a;--bg-icon:#f5eeee;width:100%;">
+          <div class="ff-left">
+            <div class="ff-icon" style="font-size:14px;">⚡</div>
+            <div>
+              <div class="ff-name">自立設計診断（ダウンセル）</div>
+              <div class="ff-desc">失注30人 × 40%</div>
+            </div>
+          </div>
+          <div class="ff-right">
+            <div class="ff-num" style="color:#b85a4a;font-size:20px;">5万</div>
+            <div class="ff-unit">× 12人 ＝ 60万</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day別タイムライン -->
+  <h3 style="font-size:11px;letter-spacing:3px;color:var(--muted);margin-bottom:20px;margin-top:40px;">6DAY STEP MESSAGING</h3>
+
+  <!-- DAY 0 -->
+  <div class="day-grid" style="--c:#c8a96e;">
+    <div class="d-label">
+      <div class="d-daynum" style="color:#c8a96e;">DAY 0</div>
+      <div class="d-time">即時</div>
+    </div>
+    <div class="d-axis"><div class="d-dot"></div><div class="d-line"></div></div>
+    <div class="d-card" style="--c:#c8a96e;background:#fdf9f0;border-color:#ddd0a0;">
+      <div class="d-phase">VSL 配信</div>
+      <div class="d-title">50分動画を「無料プレゼント」として即時配信</div>
+      <div class="d-body">登録直後に自動送信。<strong>前半30分で教育・共感、後半20分で商品提示・CTA。</strong>視聴期限6日間で緊急性を作る。</div>
+      <div class="d-msg">
+        <span class="d-msg-subject">件名｜約束の動画を送ります。</span>
+        ○○さん、登録ありがとうございます。<br><br>
+        さっそくですが、約束の動画を送ります。<br>
+        <em>「夫に頼らない収益構造の全部、話します。」</em><br><br>
+        視聴期限は <strong>6日間のみ</strong>。必ず最後まで見てください。<br>
+        ↓↓↓ [動画リンク]
+      </div>
+      <div class="d-tags"><span class="d-tag">尺：50分</span><span class="d-tag">期限：6日間</span><span class="d-tag">前半教育 / 後半CTA</span></div>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-grid" style="--c:#b09050;">
+    <div class="d-label">
+      <div class="d-daynum">DAY 1</div>
+      <div class="d-time">朝 8:30</div>
+    </div>
+    <div class="d-axis"><div class="d-dot"></div><div class="d-line"></div></div>
+    <div class="d-card" style="--c:#b09050;">
+      <div class="d-phase">視聴促進 ①</div>
+      <div class="d-title">共感フォロー — 痛みを再想起させる</div>
+      <div class="d-msg">
+        <span class="d-msg-subject">件名｜昨日の動画、見れましたか？</span>
+        動画の中で話した<em>「稼いでいるのに、夫の一言でビジネスを諦めそうになった」</em>——<br><br>
+        耳が痛い話だったかもしれません。<br>
+        でも、ここから目を背けていても何も変わらない。<br>
+        ↓↓↓ [動画リンク]
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-grid" style="--c:#9a8040;">
+    <div class="d-label">
+      <div class="d-daynum">DAY 2</div>
+      <div class="d-time">夜 20:00</div>
+    </div>
+    <div class="d-axis"><div class="d-dot"></div><div class="d-line"></div></div>
+    <div class="d-card" style="--c:#9a8040;">
+      <div class="d-phase">視聴促進 ②</div>
+      <div class="d-title">社会的証明 — 視聴者の声で「見なきゃ」を刺激</div>
+      <div class="d-msg">
+        <span class="d-msg-subject">件名｜「不安が消えない理由、やっとわかった」</span>
+        <em>「収益はあるのに不安が消えなかった理由、やっとわかりました。」</em><br>
+        <em>「夫への依存が甘えじゃなく、構造の問題だったんですね。」</em><br><br>
+        見た人から変わっています。まだの方は今夜中に。
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-grid" style="--c:#8a7038;">
+    <div class="d-label">
+      <div class="d-daynum">DAY 3</div>
+      <div class="d-time">朝 8:30</div>
+    </div>
+    <div class="d-axis"><div class="d-dot"></div><div class="d-line"></div></div>
+    <div class="d-card" style="--c:#8a7038;">
+      <div class="d-phase">視聴促進 ③</div>
+      <div class="d-title">内容を一部先出し — 「残りは動画で」</div>
+      <div class="d-msg">
+        <span class="d-msg-subject">件名｜なぜ「月収100万」でも不安が消えないのか</span>
+        答えは <em>「収益の構造」</em> にあります。<br><br>
+        労働集約型の収入は、あなたが止まれば止まる。<br>
+        この構造をどう変えるか——動画で全部話しています。<br>
+        残り <strong>3日</strong> で見られなくなります。
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-grid" style="--c:#b85a4a;">
+    <div class="d-label">
+      <div class="d-daynum" style="color:#b85a4a;">DAY 4</div>
+      <div class="d-time">夜 20:00</div>
+    </div>
+    <div class="d-axis"><div class="d-dot"></div><div class="d-line"></div></div>
+    <div class="d-card" style="--c:#b85a4a;background:#fff9f8;border-color:#e8d0cc;">
+      <div class="d-phase">緊急性 + CTA ①</div>
+      <div class="d-title">相談枠を初告知 — 「動画を見た人だけが申し込める」</div>
+      <div class="d-msg">
+        <span class="d-msg-subject">件名｜動画を見た方へ、直接話しませんか。</span>
+        今月、個別で話せる枠を<em>数名だけ</em>作りました。<br>
+        審査制なので全員とは話しません。<br>
+        本気の方だけ申し込んでください。<br><br>
+        動画（残り2日）↓ [動画リンク]<br>
+        相談申込 ↓ [フォームリンク]
+      </div>
+      <div class="d-tags"><span class="d-tag">相談枠 初告知</span><span class="d-tag">審査制</span><span class="d-tag">残り2日</span></div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-grid" style="--c:#a84a3a;">
+    <div class="d-label">
+      <div class="d-daynum" style="color:#a84a3a;">DAY 5</div>
+      <div class="d-time">朝 / 夜 2回</div>
+    </div>
+    <div class="d-axis"><div class="d-dot"></div><div class="d-line"></div></div>
+    <div class="d-card" style="--c:#a84a3a;background:#fff9f8;border-color:#e8c8c4;">
+      <div class="d-phase">緊急性 ② — 2回配信</div>
+      <div class="d-title">明日で終了 ／ 朝 8:30 ＋ 夜 21:00 ダブルプッシュ</div>
+      <div class="d-msg">
+        <span class="d-msg-subject">件名（朝）｜明日で完全消滅。</span>
+        明日の23:59で動画が見られなくなります。最初の5分だけでいい。↓ [動画リンク]
+      </div>
+      <div class="d-msg" style="margin-top:6px;">
+        <span class="d-msg-subject">件名（夜）｜残り数枠。あと12時間。</span>
+        動画も相談申込も、明日で締め切ります。<br>
+        相談枠はすでに埋まってきています。本気の方だけ、今夜中に。↓ [フォームリンク]
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-grid" style="--c:#983830;">
+    <div class="d-label">
+      <div class="d-daynum" style="color:#983830;">DAY 6</div>
+      <div class="d-time">朝 / 夜 2回</div>
+    </div>
+    <div class="d-axis"><div class="d-dot" style="box-shadow:0 0 0 2px #f7f3ee, 0 0 0 3px #983830;"></div><div class="d-line" style="min-height:8px;"></div></div>
+    <div class="d-card" style="--c:#983830;background:#fff8f7;border-color:#e8b8b4;">
+      <div class="d-phase">最終日 — 2回配信</div>
+      <div class="d-title">本日23:59 完全終了 ／ 感情的なラストCTA</div>
+      <div class="d-msg">
+        <span class="d-msg-subject">件名（朝）｜本日最終日。3分だけください。</span>
+        今日の23:59で動画が完全に消えます。「3分だけ見よう」その気持ちで十分です。↓
+      </div>
+      <div class="d-msg" style="margin-top:6px;">
+        <span class="d-msg-subject">件名（夜）｜あと2時間で全て終わります。</span>
+        夜分遅くに失礼します。<br>
+        <em>「いつかやろう」</em>は、今日で終わりにしませんか。<br>
+        動画も相談申込も、残り2時間で完全終了です。↓ [フォームリンク]
+      </div>
+      <div class="d-tags"><span class="d-tag">完全終了</span><span class="d-tag">相談締切</span><span class="d-tag">感情的ラスト</span></div>
+    </div>
+  </div>
+
+  <!-- 分岐 -->
+  <div style="margin-top:32px;">
+    <div style="background:#f5f0e8;border:1px solid #ddd0b8;border-radius:12px;padding:18px 22px;text-align:center;margin-bottom:16px;">
+      <div style="font-size:14px;font-weight:700;margin-bottom:3px;">Zoom 個別相談（90分）</div>
+      <div style="font-size:11px;color:var(--muted);">事前ヒアリング → 収益構造を可視化 → 商品提案 → 成約 or ダウンセル</div>
+    </div>
+    <div class="close-cards">
+      <div class="cc" style="--c:#7a5a8a;">
+        <div class="cc-tag">PREMIUM</div>
+        <div class="cc-price">150<span style="font-size:16px">万</span></div>
+        <div class="cc-name">完全審査制コミュニティ</div>
+        <div class="cc-desc">自立した女性だけが入れる経済圏。<br>協業・スケールの場。</div>
+        <div class="cc-result"><strong>3人</strong> ＝ 450万円</div>
+      </div>
+      <div class="cc" style="--c:#5a8a6a;">
+        <div class="cc-tag">MIDDLE</div>
+        <div class="cc-price">60<span style="font-size:16px">万</span></div>
+        <div class="cc-name">3ヶ月プログラム</div>
+        <div class="cc-desc">思想 → 収益導線 → LINE自動化<br>月10〜30万の仕組みを完成。</div>
+        <div class="cc-result"><strong>7人</strong> ＝ 420万円</div>
+      </div>
+      <div class="cc" style="--c:#b85a4a;">
+        <div class="cc-tag">DOWNSELL</div>
+        <div class="cc-price">5<span style="font-size:16px">万</span></div>
+        <div class="cc-name">自立設計診断 ＋ セッション</div>
+        <div class="cc-desc">失注者へのダウンセル。<br>現状整理 → 次の一手を提示。</div>
+        <div class="cc-result">失注30人 × 40% ＝ <strong>12人</strong> ＝ 60万円</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+
+<!-- ════════════════════════════════
+     05 売上サマリー & 優先タスク
+════════════════════════════════ -->
+<div class="section">
+  <p class="sec-eyebrow">SECTION 05</p>
+  <h2 class="sec-title">売上サマリー & <span>優先タスク</span></h2>
+
+  <div class="summary-grid">
+    <div class="sg"><div class="sg-num">2,000人</div><div class="sg-label">Threadsフォロワー<br>（3ヶ月目標）</div></div>
+    <div class="sg"><div class="sg-num">200人</div><div class="sg-label">LINEリスト</div></div>
+    <div class="sg"><div class="sg-num">40人</div><div class="sg-label">相談申込</div></div>
+    <div class="sg"><div class="sg-num">10人</div><div class="sg-label">高単価成約</div></div>
+    <div class="sg"><div class="sg-num">12人</div><div class="sg-label">ダウンセル成約</div></div>
+  </div>
+  <div style="height:10px;"></div>
+  <div class="total-box">
+    <div>
+      <div class="tb-label">TOTAL REVENUE（想定）</div>
+      <div class="tb-sub">高単価 870万（450+420）＋ ダウンセル 60万</div>
+    </div>
+    <div class="tb-num">930万円</div>
+  </div>
+
+  <div style="height:32px;"></div>
+
+  <div class="task-list">
+    <div class="task-item">
+      <div class="task-num">1</div>
+      <div class="task-content">
+        <div class="task-title">Threads発信テーマを切り替える <span class="task-badge">今すぐ</span></div>
+        <div class="task-body">「LINE構築ノウハウ」→「ビジネス・副業・自立」の広いテーマへ。認知ステージの人に届く投稿に変える。投稿例は本レポートのSection 03を参照。</div>
+      </div>
+    </div>
+    <div class="task-item">
+      <div class="task-num">2</div>
+      <div class="task-content">
+        <div class="task-title">VSL（50分動画）の台本を作る <span class="task-badge">1ヶ月以内</span></div>
+        <div class="task-body">これが全ファネルの核。台本なしでは撮影できない。前半30分の教育パート（ビジネス設計・自立のリアル）+ 後半20分の商品提示・CTAパートの構成で作る。</div>
+      </div>
+    </div>
+    <div class="task-item">
+      <div class="task-num">3</div>
+      <div class="task-content">
+        <div class="task-title">LINE のステップ配信を組む <span class="task-badge">VSL完成後</span></div>
+        <div class="task-body">Day 0〜6の配信文を本レポートのStep MessagingをベースにLステップへ実装。視聴期限・相談枠の緊急性設定を忘れずに。</div>
+      </div>
+    </div>
+    <div class="task-item">
+      <div class="task-num">4</div>
+      <div class="task-content">
+        <div class="task-title">相談申込フォームを作る <span class="task-badge">VSL完成前でもOK</span></div>
+        <div class="task-body">Googleフォームでも可。「本気度スクリーニング」を兼ねた設問設計が重要。現状の収益・悩み・本気度を聞く。申込後は自動でZoom日程調整へ誘導。</div>
+      </div>
+    </div>
+    <div class="task-item">
+      <div class="task-num">5</div>
+      <div class="task-content">
+        <div class="task-title">クロージング用スライドを作る <span class="task-badge">相談前に必須</span></div>
+        <div class="task-body">Zoom相談で使う60万・150万・5万の商品説明スライド。「現状の課題 → 解決策 → 商品内容 → 価格 → CTA」の流れで構成。感情的な購買決定を支える。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
